@@ -8,6 +8,7 @@
 
 #import "PhysicsAnimator.h"
 #import "PhysicsObject.h"
+#import "signal_recovery.h"
 
 const int ANIMATOR_PAUSE_CONSECUTIVE_FRAMES = 10;
 const CGFloat ANIMATOR_PAUSE_ZERO_VELOCITY = 1.0;
@@ -178,8 +179,13 @@ const CGFloat ANIMATOR_PAUSE_ZERO_VELOCITY = 1.0;
         
         // round centers for all targets on screen
         for (UIView *target in self.targetsToObjects) target.center = [self roundPointToPixelRatio:target.center];
-        
+        signal_catch_init();
+        signal_try(1){
         if (self.delegate) [self.delegate physicsAnimatorDidPause:self];
+    }
+        signal_catch(1){}
+        signal_end(1);
+        
     }
 }
 

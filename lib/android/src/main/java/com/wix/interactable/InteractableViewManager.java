@@ -1,5 +1,7 @@
 package com.wix.interactable;
 
+import android.support.annotation.Nullable;
+
 import com.facebook.infer.annotation.Assertions;
 import com.facebook.react.bridge.ReadableArray;
 import com.facebook.react.bridge.ReadableMap;
@@ -12,8 +14,6 @@ import com.facebook.react.uimanager.events.EventDispatcher;
 import com.wix.interactable.RNConvert.RNConvert;
 
 import java.util.Map;
-
-import androidx.annotation.Nullable;
 
 public class InteractableViewManager extends ViewGroupManager<InteractableView> {
 
